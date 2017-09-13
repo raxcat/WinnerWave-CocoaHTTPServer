@@ -18,7 +18,7 @@
 
 // Log levels: off, error, warn, info, verbose
 // Other flags: trace
-static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
+//static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 
 // Define chunk size used to read in data for responses
 // This is how much data will be read from disk into RAM at a time
@@ -893,13 +893,13 @@ static NSMutableArray *recentNonces;
 {
 	HTTPLogTrace();
 	
-	if (HTTP_LOG_VERBOSE)
-	{
-		NSData *tempData = [request messageData];
-		
-		NSString *tempStr = [[NSString alloc] initWithData:tempData encoding:NSUTF8StringEncoding];
-		HTTPLogVerbose(@"%@[%p]: Received HTTP request:\n%@", THIS_FILE, self, tempStr);
-	}
+//	if (HTTP_LOG_VERBOSE)
+//	{
+//		NSData *tempData = [request messageData];
+//		
+//		NSString *tempStr = [[NSString alloc] initWithData:tempData encoding:NSUTF8StringEncoding];
+//		HTTPLogVerbose(@"%@[%p]: Received HTTP request:\n%@", THIS_FILE, self, tempStr);
+//	}
 	
 	// Check the HTTP version
 	// We only support version 1.0 and 1.1

@@ -11,7 +11,7 @@
 
 // Log levels: off, error, warn, info, verbose
 // Other flags : trace
-static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
+//static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 
 #define TIMEOUT_NONE          -1
 #define TIMEOUT_REQUEST_BODY  10
@@ -36,10 +36,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 #define WS_OP_PING                 9
 #define WS_OP_PONG                 10
 
-static inline BOOL WS_OP_IS_FINAL_FRAGMENT(UInt8 frame)
-{
-	return (frame & 0x80) ? YES : NO;
-}
+//static inline BOOL WS_OP_IS_FINAL_FRAGMENT(UInt8 frame)
+//{
+//	return (frame & 0x80) ? YES : NO;
+//}
 
 static inline BOOL WS_PAYLOAD_IS_MASKED(UInt8 frame)
 {
@@ -108,7 +108,7 @@ static inline NSUInteger WS_PAYLOAD_LENGTH(UInt8 frame)
 	if (!upgradeHeaderValue || !connectionHeaderValue) {
 		isWebSocket = NO;
 	}
-	else if (![upgradeHeaderValue caseInsensitiveCompare:@"WebSocket"] == NSOrderedSame) {
+	else if ([upgradeHeaderValue caseInsensitiveCompare:@"WebSocket"] != NSOrderedSame) {
 		isWebSocket = NO;
 	}
 	else if ([connectionHeaderValue rangeOfString:@"Upgrade" options:NSCaseInsensitiveSearch].location == NSNotFound) {
@@ -166,13 +166,13 @@ static inline NSUInteger WS_PAYLOAD_LENGTH(UInt8 frame)
 	
 	if ((self = [super init]))
 	{
-		if (HTTP_LOG_VERBOSE)
-		{
-			NSData *requestHeaders = [aRequest messageData];
-			
-			NSString *temp = [[NSString alloc] initWithData:requestHeaders encoding:NSUTF8StringEncoding];
-			HTTPLogVerbose(@"%@[%p] Request Headers:\n%@", THIS_FILE, self, temp);
-		}
+//		if (HTTP_LOG_VERBOSE)
+//		{
+//			NSData *requestHeaders = [aRequest messageData];
+//			
+//			NSString *temp = [[NSString alloc] initWithData:requestHeaders encoding:NSUTF8StringEncoding];
+//			HTTPLogVerbose(@"%@[%p] Request Headers:\n%@", THIS_FILE, self, temp);
+//		}
 		
 		websocketQueue = dispatch_queue_create("WebSocket", NULL);
 		request = aRequest;
@@ -409,12 +409,12 @@ static inline NSUInteger WS_PAYLOAD_LENGTH(UInt8 frame)
 	NSData *responseHeaders = [wsResponse messageData];
 	
 	
-	if (HTTP_LOG_VERBOSE)
-	{
-		NSString *temp = [[NSString alloc] initWithData:responseHeaders encoding:NSUTF8StringEncoding];
-		HTTPLogVerbose(@"%@[%p] Response Headers:\n%@", THIS_FILE, self, temp);
-	}
-	
+//	if (HTTP_LOG_VERBOSE)
+//	{
+//		NSString *temp = [[NSString alloc] initWithData:responseHeaders encoding:NSUTF8StringEncoding];
+//		HTTPLogVerbose(@"%@[%p] Response Headers:\n%@", THIS_FILE, self, temp);
+//	}
+//	
 	[asyncSocket writeData:responseHeaders withTimeout:TIMEOUT_NONE tag:TAG_HTTP_RESPONSE_HEADERS];
 }
 
@@ -491,23 +491,23 @@ static inline NSUInteger WS_PAYLOAD_LENGTH(UInt8 frame)
 	
 	[asyncSocket writeData:responseBody withTimeout:TIMEOUT_NONE tag:TAG_HTTP_RESPONSE_BODY];
 	
-	if (HTTP_LOG_VERBOSE)
-	{
-		NSString *s1 = [[NSString alloc] initWithData:d1 encoding:NSASCIIStringEncoding];
-		NSString *s2 = [[NSString alloc] initWithData:d2 encoding:NSASCIIStringEncoding];
-		NSString *s3 = [[NSString alloc] initWithData:d3 encoding:NSASCIIStringEncoding];
-		
-		NSString *s0 = [[NSString alloc] initWithData:d0 encoding:NSASCIIStringEncoding];
-		
-		NSString *sH = [[NSString alloc] initWithData:responseBody encoding:NSASCIIStringEncoding];
-		
-		HTTPLogVerbose(@"key1 result : raw(%@) str(%@)", d1, s1);
-		HTTPLogVerbose(@"key2 result : raw(%@) str(%@)", d2, s2);
-		HTTPLogVerbose(@"key3 passed : raw(%@) str(%@)", d3, s3);
-		HTTPLogVerbose(@"key0 concat : raw(%@) str(%@)", d0, s0);
-		HTTPLogVerbose(@"responseBody: raw(%@) str(%@)", responseBody, sH);
-		
-	}
+//	if (HTTP_LOG_VERBOSE)
+//	{
+//		NSString *s1 = [[NSString alloc] initWithData:d1 encoding:NSASCIIStringEncoding];
+//		NSString *s2 = [[NSString alloc] initWithData:d2 encoding:NSASCIIStringEncoding];
+//		NSString *s3 = [[NSString alloc] initWithData:d3 encoding:NSASCIIStringEncoding];
+//		
+//		NSString *s0 = [[NSString alloc] initWithData:d0 encoding:NSASCIIStringEncoding];
+//		
+//		NSString *sH = [[NSString alloc] initWithData:responseBody encoding:NSASCIIStringEncoding];
+//		
+//		HTTPLogVerbose(@"key1 result : raw(%@) str(%@)", d1, s1);
+//		HTTPLogVerbose(@"key2 result : raw(%@) str(%@)", d2, s2);
+//		HTTPLogVerbose(@"key3 passed : raw(%@) str(%@)", d3, s3);
+//		HTTPLogVerbose(@"key0 concat : raw(%@) str(%@)", d0, s0);
+//		HTTPLogVerbose(@"responseBody: raw(%@) str(%@)", responseBody, sH);
+//		
+//	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
