@@ -15,7 +15,7 @@ typedef enum {
 
 #define kXMLParseOptions (XML_PARSE_NONET | XML_PARSE_RECOVER | XML_PARSE_NOBLANKS | XML_PARSE_COMPACT | XML_PARSE_NOWARNING | XML_PARSE_NOERROR)
 
-static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
+//static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
 
 @implementation DAVResponse
 

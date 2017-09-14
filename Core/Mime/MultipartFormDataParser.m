@@ -5,11 +5,11 @@
 
 #pragma mark log level
 
-#ifdef DEBUG
-static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
-#else
-static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
-#endif
+//#ifdef DEBUG
+//static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
+//#else
+//static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
+//#endif
 
 #ifdef __x86_64__
 #define FMTNSINT "li"
