@@ -10,7 +10,7 @@
 #define HTTP_BODY_MAX_MEMORY_SIZE (1024 * 1024)
 #define HTTP_ASYNC_FILE_RESPONSE_THRESHOLD (16 * 1024 * 1024)
 
-static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
+//static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
 
 @implementation DAVConnection
 

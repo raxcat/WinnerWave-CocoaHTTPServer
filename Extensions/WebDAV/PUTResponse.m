@@ -5,7 +5,7 @@
 // HTTP headers: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
 // HTTP status codes: http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 
-static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
+//static const int httpLogLevel = HTTP_LOG_LEVEL_WARN;
 
 @implementation PUTResponse
 
