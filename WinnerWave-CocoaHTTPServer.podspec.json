@@ -1,6 +1,6 @@
 {
   "name": "WinnerWave-CocoaHTTPServer",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "license": "BSD",
   "summary": "A small, lightweight, embeddable HTTP server for Mac OS X or iOS applications.",
   "homepage": "https://github.com/raxcat/WinnerWave-CocoaHTTPServer",
@@ -9,7 +9,7 @@
   },
   "source": {
     "git": "https://github.com/raxcat/WinnerWave-CocoaHTTPServer.git",
-    "tag": "2.3.4"
+    "tag": "2.3.5"
   },
   "source_files": "{Core,Extensions}/**/*.{h,m}",
   "requires_arc": true,
